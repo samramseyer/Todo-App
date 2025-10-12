@@ -1,0 +1,62 @@
+# User Stories for Project 3 - React Todo App
+
+## As a busy person
+- I want to quickly add new todo items so I can capture my tasks as they come to mind.
+- I want to mark todos as complete so I can track my progress throughout the day.
+- I want to see a clear distinction between completed and pending tasks so I can focus on what needs to be done.
+- I want to remove todos that are no longer relevant so my list stays clean and manageable.
+
+## As a task organizer
+- I want to filter my todos by status (All, Active, Completed) so I can focus on specific types of tasks.
+- I want to see the count of todos in each category so I know how much work I have remaining.
+- I want visual feedback when I interact with todos so I know my actions are being registered.
+- I want to easily toggle between completed and active states so I can correct mistakes.
+
+## As a mobile user
+- I want the app to work smoothly on my phone so I can manage tasks on the go.
+- I want touch-friendly buttons and interactions so the app is easy to use with my fingers.
+- I want the interface to adapt to my screen size so all features are accessible.
+- I want fast loading times so I can quickly check and update my tasks.
+
+## As a new user
+- I want clear instructions on the home page so I understand what the app does.
+- I want intuitive navigation so I can easily move between different sections.
+- I want helpful placeholder text and labels so I know what information to enter.
+- I want immediate feedback when I perform actions so I know the app is working.
+
+## As someone seeking support
+- I want a contact form so I can reach out with questions or feedback.
+- I want form validation so I know if I've filled out the form correctly.
+- I want clear error messages so I can fix any mistakes in my form submission.
+- I want confirmation when my message is sent so I know it was received.
+
+## As a keyboard user
+- I want to navigate the app using only my keyboard for accessibility.
+- I want to add todos by pressing Enter so I don't have to reach for the mouse.
+- I want proper focus indicators so I can see where I am in the interface.
+- I want screen reader compatibility so the app is accessible to visually impaired users.
+
+## As a productivity enthusiast
+- I want a clean, distraction-free interface so I can focus on my tasks.
+- I want smooth animations and transitions so the app feels responsive and modern.
+- I want the app to remember my todos during my session so I don't lose my work.
+- I want consistent styling and behavior so the app feels professional and reliable.
+
+## As a quality-conscious user
+- I want proper error handling so the app doesn't break when something goes wrong.
+- I want validation on form inputs so I can't submit invalid data.
+- I want the app to work reliably across different browsers and devices.
+- I want fast performance so I'm not waiting for the app to respond.
+
+## As a developer reviewing the code
+- I want well-documented code so I can understand the implementation.
+- I want clean, modular components so the code is maintainable.
+- I want proper accessibility features so the app is inclusive.
+- I want responsive design so the app works on all screen sizes.
+
+## As an instructor grading the project
+- I want to see proper React patterns and best practices implemented.
+- I want comprehensive documentation and setup instructions.
+- I want to see creative styling and user experience considerations.
+- I want evidence of proper testing and quality assurance.
+- I want clean Git history with meaningful commit messages.

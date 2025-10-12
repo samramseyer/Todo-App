@@ -1,5 +1,5 @@
 ## Future Improvements
 
-1. Add user accounts so visitors can save favorite GIFs and create collections.
-2. Implement trending and category filters to help users discover popular or themed GIFs.
-3. Enable direct GIF uploads so users can contribute their own content to the
+1. Add user accounts so visitors can save favorite to do lists.
+2. improve overall cosmetics of the site.
+3. add an about us page
