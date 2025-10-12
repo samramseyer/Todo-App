@@ -1,0 +1,39 @@
+# User Stories for Project 2 - Giphy Shed
+
+## As a visitor
+- I want to search for GIFs so I can find content that matches my interests.
+- I want to view a gallery of GIFs so I can browse and discover new animations.
+- I want to easily navigate between Home, About Us, and Contact Us pages.
+- I want the search results to load quickly so I don't lose interest.
+- I want to see relevant GIFs based on my search terms so I can find what I'm looking for.
+
+## As a mobile user
+- I want the site to be easy to use on my phone so I can search and view GIFs anywhere.
+- I want a hamburger menu so I can access navigation links on small screens.
+- I want the GIF gallery to display properly on my mobile device so I can view content clearly.
+- I want touch-friendly navigation so I can easily browse the site with my fingers.
+
+## As a content sharer
+- I want to copy or share GIF links so I can send them to friends or post on social media.
+- I want to easily save or bookmark my favorite GIFs for later use.
+- I want the GIFs to load quickly when I share them with others.
+
+## As a new user
+- I want to understand what the site does by reading the About Us page.
+- I want clear instructions on how to search for GIFs so I can get started quickly.
+- I want an intuitive interface so I don't need extensive instructions to use the site.
+
+## As someone seeking support
+- I want to contact the team if I have questions or feedback using the Contact Us page.
+- I want a simple way to report issues or suggest improvements.
+- I want to know my message was received when I submit the contact form.
+
+## As an administrator
+- I want to ensure the search and gallery work smoothly so users have a good experience.
+- I want to receive messages from the contact form so I can respond to user inquiries.
+- I want the site to handle errors gracefully so users don't see broken functionality.
+
+## As a developer
+- I want clean, maintainable JavaScript code so the project is easy to update.
+- I want proper API integration with Giphy so the search functionality is reliable.
+- I want responsive CSS so the site works across all devices and screen sizes.

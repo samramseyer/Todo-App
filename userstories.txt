@@ -1,38 +1,42 @@
-# User Stories Repository
+# User Stories Index
 
-This repository contains user stories for multiple projects:
+This repository contains user stories for multiple projects. Each project has its own dedicated user stories file for better organization.
 
-## Project 2 - Giphy Shed (HTML/CSS/JavaScript)
+## 📁 Project Files
 
-### As a visitor
-- I want to search for GIFs so I can find content that matches my interests.
-- I want to view a gallery of GIFs so I can browse and discover new animations.
-- I want to easily navigate between Home, About Us, and Contact Us pages.
+### Project 2 - Giphy Shed (HTML/CSS/JavaScript)
+**File**: `project2-userstories.txt`
+- GIF search and display functionality
+- Responsive navigation and mobile design
+- Contact form and user support
+- API integration and error handling
 
-### As a mobile user
-- I want the site to be easy to use on my phone so I can search and view GIFs anywhere.
-- I want a hamburger menu so I can access navigation links on small screens.
+### Project 3 - React Todo App
+**File**: `project3-userstories.txt`
+- Todo management (CRUD operations)
+- Task filtering and organization
+- Contact form with validation
+- Accessibility and responsive design
+- React component architecture
 
-### As a content sharer
-- I want to copy or share GIF links so I can send them to friends or post on social media.
+**Alternative Location**: `skewl/project3/my-react-app/user-stories.txt`
+(Detailed version within the React app folder)
 
-### As a new user
-- I want to understand what the site does by reading the About Us page.
-- I want to contact the team if I have questions or feedback using the Contact Us page.
+## 🎯 Quick Overview
 
-### As an administrator
-- I want to ensure the search and gallery work smoothly so users have a good experience.
-- I want to receive messages from the contact form so I can respond.
+### Project 2 Features
+- GIF search using Giphy API
+- Responsive gallery display
+- Navigation between pages
+- Contact functionality
+
+### Project 3 Features
+- Add, complete, delete todos
+- Filter by All/Active/Completed
+- Contact form with validation
+- Modern React architecture
+- Accessibility compliance
 
 ---
 
-## Project 3 - React Todo App
-
-**Note**: Detailed user stories for the React Todo App can be found in:
-`skewl/project3/my-react-app/user-stories.txt`
-
-### Quick Overview
-- **Task Management**: Add, complete, delete, and filter todos
-- **User Experience**: Responsive design, accessibility, modern UI
-- **Contact Functionality**: Form validation and user feedback
-- **Developer Experience**: Clean code, documentation, best practices
+*For detailed user stories, please refer to the individual project files listed above.*
