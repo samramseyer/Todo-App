@@ -1,66 +1,148 @@
 import React, { useState } from 'react';
 
+/**
+ * TodoList component that manages a list of todos with full CRUD functionality
+ * Features: Add, remove, toggle completion, and filter todos by status
+ * @component
+ * @returns {JSX.Element} Complete todo management interface
+ */
 const TodoList = () => {
+  // State management for todos and UI
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
 
+  /**
+   * Adds a new todo item to the list
+   * @param {Event} e - Form submission event
+   */
   const addTodo = (e) => {
     e.preventDefault();
-    if (inputValue.trim()) {
-      setTodos([...todos, { text: inputValue, completed: false }]);
+    const trimmedValue = inputValue.trim();
+    
+    if (trimmedValue) {
+      setTodos(prevTodos => [...prevTodos, { 
+        text: trimmedValue, 
+        completed: false,
+        id: Date.now() // Simple ID generation
+      }]);
       setInputValue('');
     }
   };
 
+  /**
+   * Removes a todo item from the list
+   * @param {number} index - Index of the todo to remove
+   */
   const removeTodo = (index) => {
-    const newTodos = todos.filter((_, i) => i !== index);
-    setTodos(newTodos);
+    setTodos(prevTodos => prevTodos.filter((_, i) => i !== index));
   };
 
+  /**
+   * Toggles the completion status of a todo item
+   * @param {number} index - Index of the todo to toggle
+   */
   const toggleComplete = (index) => {
-    const newTodos = todos.map((todo, i) => 
-      i === index ? { ...todo, completed: !todo.completed } : todo
+    setTodos(prevTodos => 
+      prevTodos.map((todo, i) => 
+        i === index ? { ...todo, completed: !todo.completed } : todo
+      )
     );
-    setTodos(newTodos);
   };
 
+  /**
+   * Filters todos based on current filter setting
+   * @returns {Array} Filtered array of todos
+   */
   const filteredTodos = todos.filter(todo => {
-    if (filter === 'completed') return todo.completed;
-    if (filter === 'active') return !todo.completed;
-    return true;
+    switch (filter) {
+      case 'completed':
+        return todo.completed;
+      case 'active':
+        return !todo.completed;
+      default:
+        return true;
+    }
   });
 
   return (
-    <div>
-      <form onSubmit={addTodo}>
+    <div className="todo-list-container">
+      {/* Add new todo form */}
+      <form onSubmit={addTodo} className="todo-form">
         <input 
           type="text" 
           value={inputValue} 
           onChange={(e) => setInputValue(e.target.value)} 
           placeholder="Add a new todo" 
+          className="todo-input"
+          aria-label="New todo input"
           required 
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="add-button">Add Todo</button>
       </form>
-      <div>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('active')}>Active</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
+
+      {/* Filter buttons */}
+      <div className="filter-buttons" role="tablist" aria-label="Todo filters">
+        <button 
+          onClick={() => setFilter('all')}
+          className={filter === 'all' ? 'active' : ''}
+          role="tab"
+          aria-selected={filter === 'all'}
+        >
+          All ({todos.length})
+        </button>
+        <button 
+          onClick={() => setFilter('active')}
+          className={filter === 'active' ? 'active' : ''}
+          role="tab"
+          aria-selected={filter === 'active'}
+        >
+          Active ({todos.filter(t => !t.completed).length})
+        </button>
+        <button 
+          onClick={() => setFilter('completed')}
+          className={filter === 'completed' ? 'active' : ''}
+          role="tab"
+          aria-selected={filter === 'completed'}
+        >
+          Completed ({todos.filter(t => t.completed).length})
+        </button>
       </div>
-      <ul>
-        {filteredTodos.map((todo, index) => (
-          <li key={index}>
-            <span 
-              style={{ textDecoration: todo.completed ? 'line-through' : 'none' }} 
-              onClick={() => toggleComplete(index)}
-            >
-              {todo.text}
-            </span>
-            <button onClick={() => removeTodo(index)}>Remove</button>
-          </li>
-        ))}
-      </ul>
+
+      {/* Todo list */}
+      {filteredTodos.length === 0 ? (
+        <p className="empty-message">
+          {filter === 'all' ? 'No todos yet. Add one above!' : `No ${filter} todos.`}
+        </p>
+      ) : (
+        <ul className="todo-list">
+          {filteredTodos.map((todo, index) => (
+            <li key={todo.id || index} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+              <span 
+                className="todo-text"
+                onClick={() => toggleComplete(index)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Toggle completion for: ${todo.text}`}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    toggleComplete(index);
+                  }
+                }}
+              >
+                {todo.text}
+              </span>
+              <button 
+                onClick={() => removeTodo(index)}
+                className="remove-button"
+                aria-label={`Remove todo: ${todo.text}`}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
