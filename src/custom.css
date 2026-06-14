@@ -1,0 +1,17 @@
+/* Page-specific layout tweaks */
+.home-container,
+.todos-container,
+.contact-container {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
