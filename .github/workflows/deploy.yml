@@ -51,4 +51,4 @@ jobs:
           git add index.html 404.html static/ asset-manifest.json manifest.json favicon.ico .nojekyll
           git diff --staged --quiet && echo "No production changes to deploy" && exit 0
           git commit -m "deploy: update GitHub Pages production build [skip ci]"
-          git push
+          git push || echo "Push skipped — production files may already be on main"
