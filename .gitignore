@@ -1,9 +1,14 @@
-# Node modules
+# Dependencies
 node_modules/
 
 # Build output
-dist/
 build/
+dist/
+
+# Accidental build artifacts at repo root
+/static/
+/asset-manifest.json
+/404.html
 
 # Logs
 npm-debug.log*

@@ -1,4 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+const STORAGE_KEY = 'todo-app-items';
+
+const loadTodos = () => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
+};
 
 /**
  * TodoList component that manages a list of todos with full CRUD functionality
@@ -6,9 +17,13 @@ import React, { useState } from 'react';
  * @returns {JSX.Element} Complete todo management interface
  */
 const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(loadTodos);
   const [inputValue, setInputValue] = useState('');
   const [filter, setFilter] = useState('all');
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (e) => {
     e.preventDefault();

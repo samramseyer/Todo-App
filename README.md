@@ -144,6 +144,22 @@ Todo-App/
 
 ## 🚀 Deployment
 
+### Live demo
+
+**https://samramseyer.github.io/Todo-App/**
+
+Pushes to `main` build the app and publish it to the `gh-pages` branch automatically.
+
+If the live demo shows a GitHub 404, enable Pages once:
+
+1. Open [Todo-App Settings → Pages](https://github.com/samramseyer/Todo-App/settings/pages)
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**
+3. Choose **Branch: `gh-pages`** and folder **`/ (root)`**, then click **Save**
+4. Wait 1–2 minutes, then reload the demo link
+
+Also set the repo **Website** field (repo **About** → gear icon) to:
+`https://samramseyer.github.io/Todo-App/` so portfolio “Live Demo” links work.
+
 ### Local Development
 
 ```bash
