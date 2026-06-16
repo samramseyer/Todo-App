@@ -6,14 +6,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,8 +25,13 @@ jobs:
           node-version: 20
           cache: npm
 
+      - uses: actions/configure-pages@v5
+
       - run: npm ci
       - run: npm run build
+
+      - name: Prepare GitHub Pages output
+        run: cp build/index.html build/404.html
 
       - name: Verify production build
         run: |
@@ -32,23 +39,21 @@ jobs:
             echo "Build failed: build still references source files"
             exit 1
           fi
-          test -f build/index.html
+          test -f build/.nojekyll
+          grep -q '/Todo-App/static/' build/index.html
 
-      - name: Publish build to repository root
-        run: |
-          cp build/index.html index.html
-          cp build/index.html 404.html
-          rsync -a --delete build/static/ static/
-          cp build/asset-manifest.json asset-manifest.json
-          cp build/manifest.json manifest.json 2>/dev/null || true
-          cp build/favicon.ico favicon.ico 2>/dev/null || true
-          echo '' > .nojekyll
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
 
-      - name: Commit and push production files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html static/ asset-manifest.json manifest.json favicon.ico .nojekyll
-          git diff --staged --quiet && echo "No production changes to deploy" && exit 0
-          git commit -m "deploy: update GitHub Pages production build [skip ci]"
-          git push || echo "Push skipped — production files may already be on main"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
