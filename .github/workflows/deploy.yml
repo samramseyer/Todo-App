@@ -51,12 +51,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh api --method PUT "repos/${{ github.repository }}/pages" \
-            -f build_type=legacy \
-            -f 'source[branch]=gh-pages' \
-            -f 'source[path]=/'
+          payload='{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}'
+          if ! gh api --method POST "repos/${{ github.repository }}/pages" --input - <<< "$payload"; then
+            gh api --method PUT "repos/${{ github.repository }}/pages" --input - <<< "$payload"
+          fi
 
       - name: Set repository website URL for portfolio links
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
