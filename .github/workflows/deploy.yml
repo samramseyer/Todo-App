@@ -47,16 +47,16 @@ jobs:
           publish_branch: gh-pages
           force_orphan: true
 
-      - name: Enable GitHub Pages from gh-pages branch
+      - name: Try to enable GitHub Pages automatically
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           payload='{"build_type":"legacy","source":{"branch":"gh-pages","path":"/"}}'
-          if ! gh api --method POST "repos/${{ github.repository }}/pages" --input - <<< "$payload"; then
-            gh api --method PUT "repos/${{ github.repository }}/pages" --input - <<< "$payload"
-          fi
+          gh api --method POST "repos/${{ github.repository }}/pages" --input - <<< "$payload" \
+            || gh api --method PUT "repos/${{ github.repository }}/pages" --input - <<< "$payload"
 
-      - name: Set repository website URL for portfolio links
+      - name: Try to set repository website URL
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
